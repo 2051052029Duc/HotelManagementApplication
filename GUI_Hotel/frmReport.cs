@@ -136,7 +136,7 @@ namespace GUI_Hotel
 
             } else if (weekTotal.Count > 0)
             {
-                int count = 0;
+                int count = 1;
                 foreach (int weekNumber in weekTotal.Keys)
                 {
                     count++;
@@ -174,24 +174,36 @@ namespace GUI_Hotel
             }
         }
         string id = null;
-        
         private void gvDanhSach_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
         {
             Font font = new Font("Microsoft YaHei UI", 16);
-            /*try
+            try
             {
                 id = gvDanhSach.GetRowCellValue(e.FocusedRowHandle, "Order_id").ToString();
             } catch
             {
                 id = "-1";
-            }*/
-            if(gvDanhSach.GetRowCellValue(e.FocusedRowHandle, "Order_id") == null)
-            {
-                id = "-1";
-            } else
-            {
-                id = gvDanhSach.GetRowCellValue(e.FocusedRowHandle, "Order_id").ToString();
             }
+            //try
+            //{
+            //    var order_id = gvDanhSach.GetRowCellValue(e.FocusedRowHandle, "Order_id");
+            //    if (order_id != null)
+            //    {
+            //        id = order_id.ToString();
+            //    }
+            //    else
+            //    {
+            //        id = "-1";
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Xử lý ngoại lệ nếu cần
+            //}
+            //if(id == null)
+            //{
+            //    id = "-1";
+            //}
             List<ProductCart> cart = new List<ProductCart>();
             foreach (var item in bus_od_product.getOrderDetailProductsByOrderId(int.Parse(id)))
             {
